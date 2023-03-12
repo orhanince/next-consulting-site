@@ -1,0 +1,65 @@
+$breakpoints: (
+        small: 576px,
+        medium: 768px,
+        large: 992px,
+        xlarge: 1200px
+);
+
+@mixin respond-to($breakpoint) {
+  @media only screen and (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
+}
+
+/*
+  Ellipsis mixin
+  @mixin placeholder
+ */
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*
+Font face mixin
+Usage: @include font-face($name, $filename, $weight: normal, $style: normal);
+*/
+@mixin font-face($name, $filename, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: "#{$name}";
+    src: url("../fonts/#{$filename}.eot");
+    src: url("../fonts/#{$filename}.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/#{$filename}.woff") format("woff"),
+    url("../fonts/#{$filename}.ttf") format("truetype"),
+    url("../fonts/#{$filename}.svg##{$name}") format("svg");
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+/*
+Border radius mixin
+Usage: @include border-radius($radius);
+*/
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
