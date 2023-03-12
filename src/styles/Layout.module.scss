@@ -1,0 +1,12 @@
+@import "settings";
+#header-top {
+  background: $black !important;
+}
+
+.top-nav {
+  li {
+    a {
+      color: $white !important;
+    }
+  }
+}
